@@ -62,10 +62,10 @@ function getAccessToken(oAuth2Client, callback) {
 
   */
   console.log('Authorize this app by visiting this url:', authUrl);
- /*  console.log('Vamos a autenticarnos con google');
+ console.log('Vamos a autenticarnos con google');
   (async () => {
     await open(authUrl);
-  })() */
+  })()
 
 
   const rl = readline.createInterface({
