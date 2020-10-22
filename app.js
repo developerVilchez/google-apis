@@ -4,6 +4,40 @@ const ejs = require('ejs');
 const path = require('path');
 
 
+//Set storage engine
+const storage = multer.diskStorage({
+  destination :  './public/uploads/',
+  filename : (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+  }
+})
+
+
+//check file type
+const checkFileType = (file, cb) => {
+  //crear expression para el tipo de file
+  const fileType = /jpeg|jpg|png|gif/;
+  //chequear extension
+  const extname = fileType.test(path.extname(file.originalname).toLowerCase());
+  //chequear mimetype
+  const mimetype = fileType.test(file.mimetype);
+
+  if(mimetype && extname){
+    return cb(null, true)
+  } else {
+    cb('Error : Images Only')
+  }
+}
+
+//init upload
+const upload = multer({
+  storage : storage,
+  limits : {fileSize: 1000000},
+  fileFilter : (req, file, cb) => {
+    checkFileType(file, cb)
+  }
+}).single('image')
+
 
 // Init app
 const app = express();
@@ -19,6 +53,17 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.post('/upload', (req, res) => {
+  //res.send('test')
+  upload(req, res, (err) => {
+    if(err) {
+     res.render('index', { msg : err}) 
+    } else {
+      console.log(req.file)
+      res.send('test')
+    }
+  })
+})
 
 const PORT = 8001 || process.env.PORT
 
