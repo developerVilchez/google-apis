@@ -1,18 +1,26 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const multer = require('multer');
+
+//Rutas
 const homeRouter = require('./routes/home');
 const uploadRouter = require('./routes/upload');
+
 //settings
 app.set('view engine', 'ejs');
 app.set('port', 5003);
 app.set('views', path.join(__dirname, 'views'))
 
+
+//middlewares
+app.use(multer({
+  dest : './public/uploads'
+}).single('image'));
+
 //muestra el path del archivo app.js
 //console.log(__dirname) 
-console.log(path.join(__dirname, 'views'))
-
-
+//console.log(path.join(__dirname, 'views'))
 //const port = 5003 || process.env.PORT;
 
 
