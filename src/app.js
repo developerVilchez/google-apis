@@ -1,25 +1,6 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const multer = require('multer');
-
-//definimos como quiero que guarde la data multer
-
-const storage = multer.diskStorage({
-  destination :  './public/uploads/',
-  filename : (req, file, cb) => {
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
-  }
-})
-
-
-//middlewares
-app.use(multer({
-  storage
-}).single('image'));
-
-
-
 
 //settings
 app.set('view engine', 'ejs');
@@ -30,10 +11,6 @@ app.set('views', path.join(__dirname, 'views'))
 const homeRouter = require('./routes/home');
 const uploadRouter = require('./routes/upload');
 
-//muestra el path del archivo app.js
-//console.log(__dirname) 
-//console.log(path.join(__dirname, 'views'))
-//const port = 5003 || process.env.PORT;
 
 
 //traemos las rutas
