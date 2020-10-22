@@ -13,6 +13,7 @@ const storage = multer.diskStorage({
 })
 
 
+
 //check file type
 const checkFileType = (file, cb) => {
   //crear expression para el tipo de file
@@ -50,7 +51,7 @@ app.use(express.static('./public'));
 
 app.get('/', (req, res) => {
   //res.send('empezamos')
-  res.render('index')
+  res.render('index', {file : ''})
 })
 
 app.post('/upload', (req, res) => {
