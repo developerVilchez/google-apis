@@ -15,6 +15,10 @@ app.set('views', path.join(__dirname, 'views'))
 app.use('/', homeRouter);
 app.use('/upload',uploadRouter);
 
+console.log(path.join(__dirname, '/public'))
+//Public folder
+app.use(express.static(path.join(__dirname, '/public')));
+
 const port = app.get('port');
 
 app.listen(port, () => {
