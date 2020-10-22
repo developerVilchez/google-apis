@@ -8,8 +8,15 @@ const path = require('path');
 // Init app
 const app = express();
 
+//EJE
+app.set('view engine', 'ejs');
+
+//Public folder
+app.use(express.static('./public'));
+
 app.get('/', (req, res) => {
-  res.send('empezamos')
+  //res.send('empezamos')
+  res.render('index')
 })
 
 
