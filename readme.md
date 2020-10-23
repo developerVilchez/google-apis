@@ -22,7 +22,7 @@ output : Setting default object ACL on gs://buckect-name-awesome-lulu
 
 ## Siguientes investigaciones
 Dudas a resolver sobre Node
-- ¿Qué es un stream?
+- ¿Qué es un stream? en el conexto de node
 - ¿Qué correlación existe entre usar un stream con node y trabajar en la nube?
 - Tengo la idea de un middleware, pero realmente que es lo que hace? puedo implementarlos yo de manera libre y soberana
 - Que es un evento en node
