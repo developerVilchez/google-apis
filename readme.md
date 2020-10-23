@@ -31,6 +31,9 @@ bondades de express.
 - Lograr mandar mas de una foto
 - Revisar el uso de la libreria `gsc-file-upload`
 - De que trata el cloud computing
+- Hacer un projecto con `ejs` 
+
+[ejs-node-templates-js](https://ejs.co/#install)
 
 [cloud-storage-google](https://www.woolha.com/tutorials/node-js-upload-file-to-google-cloud-storage)
 
