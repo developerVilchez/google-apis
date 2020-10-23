@@ -28,5 +28,13 @@ Dudas a resolver sobre Node
 - Que es un evento en node
 - Hacer un proyecto con node y express sin ninguna libreria para conocer las 
 bondades de express.
+- Lograr mandar mas de una foto
+- Revisar el uso de la libreria `gsc-file-upload`
 
 [cloud-storage-google](https://www.woolha.com/tutorials/node-js-upload-file-to-google-cloud-storage)
+
+[Image Upload With Google Cloud Storage and Node.js](https://medium.com/@olamilekan001/image-upload-with-google-cloud-storage-and-node-js-a1cf9baa1876)
+
+
+Upload files to Google Cloud Storage easily and with less code.
+[gcs-file-upload](https://www.npmjs.com/package/gcs-file-upload)
