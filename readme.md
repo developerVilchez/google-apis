@@ -43,3 +43,10 @@ bondades de express.
 
 Upload files to Google Cloud Storage easily and with less code.
 [gcs-file-upload](https://www.npmjs.com/package/gcs-file-upload)
+
+[googleapis-storage-node](https://github.com/googleapis/nodejs-storage)
+
+[validacion de credenciales - gcp](https://cloud.google.com/docs/authentication/getting-started#linux-or-macos)
+
+### Videos
+[How to Upload a File to Google Cloud Storage in Node.js](https://www.youtube.com/watch?v=pGSzMfKBV9Q&ab_channel=BenAwad)
