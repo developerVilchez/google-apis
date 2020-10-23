@@ -4,6 +4,8 @@ const path = require('path');
 const Multer = require('multer');
 const {Storage} = require('@google-cloud/storage');
 const vision = require('@google-cloud/vision');
+const mongoose = require('mongoose');
+const key = require('./config/key');
 
 //Iniciamos un cliente con google-cloud-storage
 const storage = new Storage({ keyFilename : "keys.json", projectId : process.env.GOOGLE_CLOUD_PROJECT});
@@ -17,6 +19,13 @@ const bucket = storage.bucket(bucketName);
 
 //console.log(clientVision);
 //console.log(bucket)
+
+//Conectando con la bd
+//Connect con mongodb
+const db = key.mongo.db;
+mongoose.connect(db, {useUnifiedTopology: true, useNewUrlParser: true })
+.then(() => console.log(`Connected to mongo cloud`))
+.catch((err) => console.log(err) )
 
 //Seteando middlewares
 app.set('view engine', 'ejs')
