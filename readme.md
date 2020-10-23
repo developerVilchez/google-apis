@@ -1,5 +1,12 @@
 # Subida de imagenes al cloud storage de google
 
+## Variables de entorno
+
+```cmd
+export GOOGLE_CLOUD_PROJECT="id-projecto"
+export GOOGLE_APPLICATION_CREDENTIALS="id-projecto"
+```
+
 ## Proyecto que funciona <3
 
 //Crear buckets por console de gc terminal

@@ -3,12 +3,19 @@ const app = express();
 const path = require('path');
 const Multer = require('multer');
 const {Storage} = require('@google-cloud/storage');
+const vision = require('@google-cloud/vision');
 
 //Iniciamos un cliente con google-cloud-storage
 const storage = new Storage({ keyFilename : "keys.json", projectId : process.env.GOOGLE_CLOUD_PROJECT});
+
+const clientVision = new vision.ImageAnnotatorClient({
+  keyFile : 'keys.json',
+  projectId : process.env.GOOGLE_APPLICATION_CREDENTIALS
+});
 const bucketName = 'pictures-awesome-lulu-flow';
 const bucket = storage.bucket(bucketName);
 
+//console.log(clientVision);
 //console.log(bucket)
 
 //Seteando middlewares
@@ -74,9 +81,17 @@ app.post('/upload', multer.single('image'), sendUploadToGCP, (req, res, next) =>
   if(req.file && req.file.cloudStoragePublicUrl) {
     data.imageUrl = req.file.cloudStoragePublicUrl;
     //res.redirect('/capture');
-    res.render('capture', {
-      src : data.imageUrl
+    clientVision.textDetection(data.imageUrl)
+    .then(results => { 
+       data.text = results[0].textAnnotations[0].description 
+      //console.log(results[0].textAnnotations[0].description)
+      res.render('capture', {
+        src : data.imageUrl,
+        text : data.text
+      })
     })
+    .catch(err => console.error('ERROR', err))
+   
   }
 })
 
