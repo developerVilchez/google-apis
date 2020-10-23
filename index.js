@@ -6,6 +6,7 @@ const {Storage} = require('@google-cloud/storage');
 const vision = require('@google-cloud/vision');
 const mongoose = require('mongoose');
 const key = require('./config/key');
+const Capture = require('./models/capture');
 
 //Iniciamos un cliente con google-cloud-storage
 const storage = new Storage({ keyFilename : "keys.json", projectId : process.env.GOOGLE_CLOUD_PROJECT});
@@ -98,6 +99,13 @@ app.post('/upload', multer.single('image'), sendUploadToGCP, (req, res, next) =>
         src : data.imageUrl,
         text : data.text
       })
+      new Capture({
+        img : data.imageUrl,
+        content : data.text
+      }).save().then((newCapture) => {
+        console.log(`Nueva captura ingresada ${newCapture}` )
+      })
+
     })
     .catch(err => console.error('ERROR', err))
    
