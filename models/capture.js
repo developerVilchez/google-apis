@@ -8,4 +8,4 @@ const captureSchema = new Schema({
 
 const Capture = mongoose.model('capture', captureSchema);
 
-module.exports = captureSchema;
+module.exports = Capture;
